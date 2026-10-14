@@ -39,6 +39,16 @@ def get_random_list_item(aList:list=[]):    # take in a list but return an any t
     random_item = aList[n]  # get the n item from list
     return(random_item)     # return the n item
 
+def quizing(random_question:list):
+    # print quest
+    print(random_question['Question'])
+    # print options
+    print(f"A.{random_question['Option A']}       B.{random_question['Option B']}       C.{random_question['Option C']}       D.{random_question['Option D']}\t")
+    # user input answer
+    
+    # check with correct answer
+    # print SUCCESS_MESSAGE or FAIL_MESSAGE message
+
 def main():
     # quiz question location
     file_location = './quiz_questions.csv'
@@ -48,8 +58,9 @@ def main():
 
     # get a random question from list
     random_question = get_random_list_item(question_list)
-    print(random_question)
-    #print(question_list)
+
+    # quizing user with random question
+    quizing(random_question)
     
     # num = rng_generator(start_from=0, end_to=len(question_list))
     # print(rng_generator(20,19))
