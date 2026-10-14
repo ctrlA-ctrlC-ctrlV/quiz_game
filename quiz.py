@@ -39,13 +39,33 @@ def get_random_list_item(aList:list=[]):    # take in a list but return an any t
     random_item = aList[n]  # get the n item from list
     return(random_item)     # return the n item
 
+# get user input, input must be A/B/C/D, return the Option A/B/C/D as per list layout
+def get_answer() -> str:    # function return string
+    while True:
+        reply = input("Your answer >> ").strip().upper()    # strip and upper case the layout to clean input
+        # if input within A/B/C/D return the correct value
+        if reply == 'A' or reply == 'B' or reply == 'C' or reply == 'D':
+            match reply:
+                case 'A':
+                    return 'Option A'
+                case 'B':
+                    return 'Option B'
+                case 'C':
+                    return 'Option C'
+                case 'D':
+                    return 'Option D'
+        else:   # else print error message and loop again
+            print(f"You have entered {reply}, it must be A/B/C/D")
+
+
 def quizing(random_question:list):
     # print quest
     print(random_question['Question'])
     # print options
     print(f"A.{random_question['Option A']}       B.{random_question['Option B']}       C.{random_question['Option C']}       D.{random_question['Option D']}\t")
     # user input answer
-    
+    user_input = get_answer()
+    print(random_question[user_input])
     # check with correct answer
     # print SUCCESS_MESSAGE or FAIL_MESSAGE message
 
