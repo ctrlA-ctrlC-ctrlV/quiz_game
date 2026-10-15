@@ -43,31 +43,37 @@ def get_random_list_item(aList:list=[]):    # take in a list but return an any t
 def get_answer() -> str:    # function return string
     while True:
         reply = input("Your answer >> ").strip().upper()    # strip and upper case the layout to clean input
-        # if input within A/B/C/D return the correct value
+        # if input within A/B/C/D return input
         if reply == 'A' or reply == 'B' or reply == 'C' or reply == 'D':
-            match reply:
-                case 'A':
-                    return 'Option A'
-                case 'B':
-                    return 'Option B'
-                case 'C':
-                    return 'Option C'
-                case 'D':
-                    return 'Option D'
+            return reply
         else:   # else print error message and loop again
             print(f"You have entered {reply}, it must be A/B/C/D")
+
+# check user answer match with the correct answer, if yes print correct, if not print wrong with correct answer
+def check_answer(question:list, anAnswer:str) -> str:
+    if question and anAnswer:   # check question list or user answer is loaded
+        if anAnswer == question['Correct Answer']:
+            return "Correct!"
+        else:
+            return f"Wrong! The correct answer is {question['Correct Anser']}. {question[question['Correct Anser']]}"
+    else:
+        print("Error: Question list or user answer cannot be empty")
 
 
 def quizing(random_question:list):
     # print quest
     print(random_question['Question'])
+
     # print options
-    print(f"A.{random_question['Option A']}       B.{random_question['Option B']}       C.{random_question['Option C']}       D.{random_question['Option D']}\t")
-    # user input answer
+    print(f"A.{random_question['A']}       B.{random_question['B']}       C.{random_question['C']}       D.{random_question['D']}\t")
+    
+    # user input answer and filter for correct answer
     user_input = get_answer()
-    print(random_question[user_input])
-    # check with correct answer
-    # print SUCCESS_MESSAGE or FAIL_MESSAGE message
+    # confirming using input
+    print(f"You have selected {user_input}. {random_question[user_input]}")
+
+    # check with correct answer, and print message depends on answer
+    print(check_answer(random_question, user_input))
 
 def main():
     # quiz question location
@@ -80,11 +86,7 @@ def main():
     random_question = get_random_list_item(question_list)
 
     # quizing user with random question
-    quizing(random_question)
-    
-    # num = rng_generator(start_from=0, end_to=len(question_list))
-    # print(rng_generator(20,19))
-    # print(f"A random number from 0 to {len(question_list)} is {num}")
+    quizing(random_question)    
 
 if __name__ == "__main__":
     main()
