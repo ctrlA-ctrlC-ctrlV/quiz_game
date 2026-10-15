@@ -55,7 +55,7 @@ def check_answer(question, anAnswer:str) -> str:
         if anAnswer == question['Correct Answer']:
             return "Correct!"
         else:
-            return f"Wrong! The correct answer is {question['Correct Anser']}. {question[question['Correct Anser']]}"
+            return f"Wrong! The correct answer is {question['Correct Answer']}. {question[question['Correct Answer']]}"
     else:
         print("Error: Question list or user answer cannot be empty")
 
@@ -69,6 +69,7 @@ def quizing(random_question:list):
     
     # user input answer and filter for correct answer
     user_input = get_answer()
+
     # confirming using input
     print(f"You have selected {user_input}. {random_question[user_input]}")
 
