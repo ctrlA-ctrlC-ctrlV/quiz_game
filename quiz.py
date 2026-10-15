@@ -82,11 +82,12 @@ def main():
     # read in question list and convert to list
     question_list = csv_reader(file_location)
 
-    # get a random question from list
-    random_question = get_random_list_item(question_list)
+    while True:
+        # get a random question from list
+        random_question = get_random_list_item(question_list)
 
-    # quizing user with random question
-    quizing(random_question)    
+        # quizing user with random question
+        quizing(random_question)    
 
 if __name__ == "__main__":
     main()
