@@ -34,7 +34,7 @@ def rng_generator(start_from:int=0, end_to:int=0) -> int: # take in two int to g
 # function depends on rng_generator()
 def get_random_list_item(aList:list=[]):    # take in a list but return an any type since
                                             # what's in the array is unknown
-    n:int = rng_generator(start_from=0, end_to=len(aList))  # use rng_generator() to get a 
+    n:int = rng_generator(start_from=0, end_to=len(aList)-1)  # use rng_generator() to get a 
                                                             # random int 'n' within size of list
     random_item = aList[n]  # get the n item from list
     return(random_item)     # return the n item
@@ -50,7 +50,7 @@ def get_answer() -> str:    # function return string
             print(f"You have entered {reply}, it must be A/B/C/D")
 
 # check user answer match with the correct answer, if yes print correct, if not print wrong with correct answer
-def check_answer(question:list, anAnswer:str) -> str:
+def check_answer(question, anAnswer:str) -> str:
     if question and anAnswer:   # check question list or user answer is loaded
         if anAnswer == question['Correct Answer']:
             return "Correct!"
